@@ -93,7 +93,7 @@ public class VdeSanSP extends DoctrinaSocialDeLaIglesia {
 
     @Override
     protected String getInputTemplateWithGrade() {
-        return "input\\RWB_SP\\G{grade}.xlsx";
+        return "input\\WB_SP\\WB_SP_{grade}.xls";
     }
 
     public static void main(String[] args) {

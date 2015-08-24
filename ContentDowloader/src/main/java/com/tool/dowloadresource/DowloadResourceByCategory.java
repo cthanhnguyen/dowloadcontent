@@ -4,7 +4,8 @@ import com.colectcontent.MyTask;
 import com.colectcontent.ResourceInfo;
 import com.colectcontent.SimpleThread;
 import com.tool.ProductMeta;
-import com.until.Untils;
+
+import com.until.TestHttpClient;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -26,6 +27,8 @@ public class DowloadResourceByCategory {
     static final String dowloadprefix = "http://192.168.2.12:8090/cms";
     List<ResourceInfo> resourceInfoList = new ArrayList<>();
     public void doWork(){
+        TestHttpClient.innit();
+
        readResourceByCategory();
 
        for(final ResourceInfo item:resourceInfoList){
@@ -54,9 +57,9 @@ public class DowloadResourceByCategory {
     private void dowLoadFiles(List<String> listFiles, String ouputTemplate) {
         for(String dirLink:listFiles){
             //System.out.println("link : " + dirLink);
-            String ext = Untils.getFileExtFromLink(dirLink);
+            String ext = TestHttpClient.getFileExtFromLink(dirLink);
             if(dowLoadFile(ext)){
-                Untils.dowloadFile(dowloadprefix + dirLink, ouputTemplate + dirLink);
+                TestHttpClient.dowloadFile(dowloadprefix + dirLink, ouputTemplate + dirLink);
             }
         }
     }
@@ -108,7 +111,7 @@ public class DowloadResourceByCategory {
         String listFileLink = "http://192.168.2.12:8090/cms/product/listAssetsWithUrl.html";
         List<NameValuePair> formData = new ArrayList<>();
         formData.add(new BasicNameValuePair("path",dowLoadUri));
-        String htmlCode = Untils.postHtmlFromURL(listFileLink,formData);
+        String htmlCode = TestHttpClient.callPostMethod(listFileLink, formData);
         Pattern filePatten = Pattern.compile("<td>(" + dowLoadUri + "[^<]+)</td>");
         Matcher matcher = filePatten.matcher(htmlCode);
         List<String> result = new ArrayList<>();
@@ -184,7 +187,7 @@ public class DowloadResourceByCategory {
 
 
     public static void main(String[] args) {
-        Untils.innit();
+
         DowloadResourceByCategory task = new DowloadResourceByCategory();
         task.doWork();
     }

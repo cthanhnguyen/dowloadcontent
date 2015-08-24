@@ -115,12 +115,12 @@ public class Untils {
         HttpGet httpGet = null;
         httpGet = new HttpGet(link);
         HttpResponse response = null;
+
+
         HttpClientContext context = HttpClientContext.create();
         client = HttpClientBuilder.create().setDefaultCookieStore(httpCookieStore).setRedirectStrategy(new LaxRedirectStrategy()).build();
-
         try {
             response = client.execute(httpGet, context);
-
             List<URI> redirectURIs = context.getRedirectLocations();
             if (redirectURIs != null) {
                 //if server rediarect you and the link not reconize as loginplace. it mush be the file you waint to dowload.
@@ -253,6 +253,7 @@ public class Untils {
 
         try {
             response = client.execute(post, context);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -314,8 +315,8 @@ public class Untils {
         matcher.find();
         String loginForm = "http://192.168.2.12:8090" + matcher.group(1);
         List<NameValuePair> input = new ArrayList<>();
-        input.add(new BasicNameValuePair("j_username", "admin"));
-        input.add(new BasicNameValuePair("j_password", "123456"));
+        input.add(new BasicNameValuePair("j_username", "thanh"));
+        input.add(new BasicNameValuePair("j_password", "142536"));
 
         HttpPost post = new HttpPost(loginForm);
         HttpClientContext context = HttpClientContext.create();
@@ -366,14 +367,6 @@ public class Untils {
         }
 
 
-    }
-
-    public static String getCookies() {
-        return cookies;
-    }
-
-    public static void setCookies(String cookies) {
-        Untils.cookies = cookies;
     }
 
     public static void detectAndDowImg(String mainContent, String outPutdir, String workingLink) {

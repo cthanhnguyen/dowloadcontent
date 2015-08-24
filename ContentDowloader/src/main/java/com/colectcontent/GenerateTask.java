@@ -1,6 +1,9 @@
 package com.colectcontent;
 
 import com.until.Untils;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -98,7 +101,7 @@ public abstract class GenerateTask {
      */
     protected abstract String WorkingOnCategory();
 
-    private void readResourceCode(String grade, String tcategory, List<ResourceInfo> resourceInfoList) {
+    protected void readResourceCode(String grade, String tcategory, List<ResourceInfo> resourceInfoList) {
         try {
             //String file="input\\RWB_ENG\\G{grade}.xlsx";
             String file= getInputTemplateWithGrade();
@@ -107,10 +110,10 @@ public abstract class GenerateTask {
             //POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(file));
             String inputPath =  System.getProperty("user.dir")+"\\"+file;
             System.out.println(inputPath);
-            XSSFWorkbook wb = new XSSFWorkbook(new FileInputStream(inputPath));
-            XSSFSheet sheet = wb.getSheetAt(0);
-            XSSFRow row;
-            XSSFCell cell;
+            HSSFWorkbook wb = new HSSFWorkbook(new FileInputStream(inputPath));
+            HSSFSheet sheet = wb.getSheetAt(2);
+            HSSFRow row;
+            //XSSFCell cell;
 
             int rows; // No of rows
             rows = sheet.getPhysicalNumberOfRows();

@@ -31,7 +31,7 @@ public class GenateGatherTask {
 
     public void dowork(){
         List<TitleInfo> titles = new ArrayList<>();
-        titles.add(new TitleInfo("ordinary",true,languageParam(),getOtionNAV()));
+        titles.add(new TitleInfo("garden",false,languageParam(),getOtionNAV()));
         //titles.add(new TitleInfo("epiphany",false,languageParam(),getOtionNAV()));
         //titles.add(new TitleInfo("katrina",false,languageParam(),getOtionNAV()));
         //titles.add(new TitleInfo("eucharist",true,languageParam(),getOtionNAV()));
@@ -106,7 +106,7 @@ public class GenateGatherTask {
                 "\n" +
                 "                            <ul class=\"group-cluster\">\n" +
                 "                                <li>\n" +
-                "                                    <a target=\"cluster-pre-k\" class=\"nav-gather grade-cluster bold-blue\">Pre/K—K</a>\n" +
+                "                                    <a target=\"cluster-pre-k\" class=\"nav-gather grade-cluster bold-blue\">Pre/Kï¿½K</a>\n" +
                 "                                    Pre-school (age 4) and Kindergarten\n" +
                 "                                </li>\n" +
                 "\n" +
@@ -309,7 +309,7 @@ public class GenateGatherTask {
     }
 
     private String midAnounContent(TitleInfo title) {
-        String link ="http://www.sadlierreligion.com/webelieve/gather.cfm?page="+gethtlmTitle(title)+"&sp=option1&tp=bulletin";
+        String link ="http://www.sadlierreligion.com/webelieve/gather.cfm?page="+gethtlmTitle(title)+"&sp=option1&tp=bulletin"+languageParam();
         return strategy1.midAnounContent(link, getOutputPre(title));
     }
 

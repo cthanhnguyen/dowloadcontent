@@ -15,11 +15,14 @@ import java.util.List;
  * Created by vincent on 7/22/2015.
  */
 public class AñoLitúrgico extends GenerateTask{
-
+    @Override
+    protected void readResourceCode(String grade, String tcategory, List<ResourceInfo> resourceInfoList) {
+        resourceInfoList.add(new ResourceInfo("0","Resources","Año litúrgico"));
+    }
     @Override
     protected void setUpWorkingGrade() {
-        Grade = new String[]{"1","2","3","4","5","6","K"};
-        //Grade = new String[]{"1"};
+        //Grade = new String[]{"1","2","3","4","5","6","K"};
+        Grade = new String[]{"1"};
     }
 
     @Override

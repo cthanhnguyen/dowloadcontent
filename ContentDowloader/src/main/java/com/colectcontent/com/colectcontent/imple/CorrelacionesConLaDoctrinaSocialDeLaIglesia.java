@@ -18,7 +18,7 @@ public class CorrelacionesConLaDoctrinaSocialDeLaIglesia extends VdeSanSP{
     @Override
     protected void midResourceLinkData(List<ResourceInfo> resourceInfoList, String grade) {
         for(ResourceInfo item: resourceInfoList){
-            item.setResourceDataLink("http://www.sadlierreligion.com/webelieve/catholicsocialcorrelations.cfm?language=sp&sp=teacher&section=resource&grade=1");
+            item.setResourceDataLink("http://www.sadlierreligion.com/webelieve/catholicsocialcorrelations.cfm?language=sp&sp=teacher&section=resource&grade="+grade);
         }
     }
     @Override

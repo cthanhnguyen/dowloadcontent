@@ -12,15 +12,12 @@ public class DowloadMetaData {
     public void DowloadAndConverExlFiles(){
         ProductMeta[] productCode =  getProdoctCodeList();
         for(final ProductMeta item:productCode){
-
                     System.out.println("Dowloading "+item.getCode());
                     String oPutdirTemplate = getOutPutTemplate();
                     String dowLink = pemplateLink.replace("{productId}",item.getResourceID());
                     String outPutlink = oPutdirTemplate.replace("{code}",item.getCode());
                     Untils.dowloadFile(dowLink,outPutlink);
-                    System.out.println("Dowload "+item.getCode()+" Done!");
-
-
+                    System.out.println("Dowload " + item.getCode() + " Done!");
 
         }
         //String ln = "http://192.168.2.12:8090/cms/product/exportProductMetaData.html?pojo.productId=749";
